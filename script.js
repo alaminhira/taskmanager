@@ -4,8 +4,9 @@ const items = document.querySelectorAll('.task__item');
 
 let curId = null;
 const dragStart = function(e) {
-    this.className += ' hold';
+    this.classList.add('hold');
     curId = e.target.parentNode.dataset.id
+    setTimeout(() => this.classList.add('hide'), 0);
 }
 
 const dragEnd = function() {
@@ -26,6 +27,7 @@ const dragLeave = () => lists.forEach(l => l.classList.remove('hovered'));
 
 const dragDrop = function(e) {
     const itemHold = document.querySelector('.hold');
+    itemHold.classList.remove('hide');
     this.appendChild(itemHold);
     this.classList.remove('hovered');
 }

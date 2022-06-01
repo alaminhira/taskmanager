@@ -73,6 +73,10 @@ body {
     border: .1rem solid rgb(182, 174, 174);
 }
 
+.hide {
+    display: none;
+}
+
 .hovered {
     border: .2rem dashed #a7a7a7;
 }
