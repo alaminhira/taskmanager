@@ -31,11 +31,17 @@ body {
     margin: 0 1rem;
     border-radius: .5rem;
     width: 13rem;
+    align-self: flex-start;
 }
 
 .task__list {
     list-style: none;
     padding: 0 .5rem;
+    border: .2rem dashed transparent;
+}
+
+.task__list.hovered .task__item {
+    pointer-events: none;
 }
 
 .task__title {
@@ -59,4 +65,14 @@ body {
     background: rgb(84, 83, 83);
     padding: 1rem .5rem 2.5rem;
     margin: .5rem 0;
+    border: .1rem solid transparent;
+    cursor: pointer;
+}
+
+.hold {
+    border: .1rem solid rgb(182, 174, 174);
+}
+
+.hovered {
+    border: .2rem dashed #a7a7a7;
 }
