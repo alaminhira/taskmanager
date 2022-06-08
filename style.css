@@ -1,7 +1,9 @@
-* {
+*,
+*:focus {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
 }
 
 body {
@@ -19,6 +21,17 @@ body {
 
 .task__container-title {
     font-size: 2rem;
+}
+
+.task__form-input {
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+.task__form-btn {
+    padding: .5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .task__boxes {
