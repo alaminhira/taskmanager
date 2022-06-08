@@ -50,6 +50,8 @@ lists.forEach((list, i) => {
 
 const addToTodo = function(e) {
     e.preventDefault();
+
+    if (!formInput.value) return;
     
     document.querySelector('.task__list--todo').insertAdjacentHTML(
         'beforeend',
