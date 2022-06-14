@@ -3,6 +3,9 @@ $bgClr-sec: #545353;
 $bgClr-prim: #333;
 
 *,
+*,
+*::before,
+*::after,
 *:focus {
     margin: 0;
     padding: 0;

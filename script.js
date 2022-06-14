@@ -46,7 +46,7 @@ const renderStatus = function (list, status) {
     );
 }
 
-let curId = null, childCount;
+let curId = '', childCount;
 const dragStart = function (e) {
     e.target.classList.add('hold');
     curId = e.target.parentNode.dataset.id

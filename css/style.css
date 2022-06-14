@@ -1,4 +1,7 @@
 *,
+*,
+*::before,
+*::after,
 *:focus {
   margin: 0;
   padding: 0;
