@@ -1,0 +1,6 @@
+{
+    "todo": ["task 01", "task 02", "task 03"],
+    "ip": ["task 04", "task 07", "task 08"],
+    "done": [],
+    "status": "Drag a status from another status or add a new one"
+}
