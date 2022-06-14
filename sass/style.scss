@@ -1,0 +1,167 @@
+$clr-text-light: rgba(255, 255, 255, .5);
+$bgClr-sec: #545353;
+$bgClr-prim: #333;
+
+*,
+*:focus {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+body {
+    background: #333;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.task__form-input {
+    display: inline-block;
+    padding: .5rem;
+    font-size: 1rem;
+}
+
+.task__form-submit {
+    display: inline-block;
+    padding: .5rem .7rem;
+    border-radius: .5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.task {
+    &__container {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &-title {
+            font-size: 2rem;
+        }
+    }
+
+    &__boxes {
+        display: flex;
+        margin-top: 2rem;
+    }
+    
+    &__box {
+        margin: 0 1rem;
+        border-radius: .5rem;
+        width: 15rem;
+        align-self: flex-start;
+    }
+    
+    &__list {
+        position: relative;
+        list-style: none;
+        border: .2rem dashed transparent; 
+        z-index: 9;  
+    }
+    
+    &__title {
+        font-size: 1.75rem;
+        padding: .5rem 1rem;
+        text-align: center;
+        
+        &--todo {
+            background: rgb(15, 129, 223);
+        }
+        
+        &--ip {
+            background: goldenrod;
+        }
+        
+        &--done {
+            background: green;
+        }
+        
+    }
+
+    &__item {
+        &,
+        &-status{
+            background: $bgClr-sec;
+            padding: 1rem .5rem 2.5rem;
+            margin: .5rem 0;
+            border: .1rem solid transparent;
+            cursor: pointer;
+            box-shadow: 0 .2rem .3rem 0 rgba(0, 0, 0, .75);
+            user-select: none;
+        }
+
+        &-status {
+            color: $clr-text-light;
+            padding: 1rem .5rem;
+        }
+    }
+
+    &__list.hovered &__item {
+        pointer-events: none;
+    }
+
+    &__add {
+        text-align: right;
+        position: relative;
+
+        &-btn {
+            width: 100%;
+            background: $bgClr-sec;
+            padding: .5rem;
+            color: aqua;
+            cursor: pointer;
+        }
+
+        &-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: $bgClr-prim;
+            opacity: 0;
+            visibility: hidden;
+
+            &.show { 
+                opacity: 1;
+                visibility: visible; 
+
+            }
+        }
+
+        &-input {
+            color: $clr-text-light;
+            background: $bgClr-sec;
+            padding: .5rem;
+            width: 100%;
+            margin-bottom: .5rem;
+        }
+
+        &-cancel,
+        &-create {
+            background: $bgClr-sec;
+            color: #fff;
+            padding: .5rem 1rem;
+            cursor: pointer;
+        }
+
+        &-create {
+            background: aqua;
+            color: $bgClr-sec;
+        }
+    }
+}
+
+// Utility classes
+.hold {
+    border: .1rem solid rgb(182, 174, 174);
+}
+
+.hide {
+    display: none;
+}
+
+.hovered {
+    border: .2rem dashed #a7a7a7;
+}

@@ -1,0 +1,170 @@
+*,
+*:focus {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+body {
+  background: #333;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.task__form-input {
+  display: inline-block;
+  padding: .5rem;
+  font-size: 1rem;
+}
+
+.task__form-submit {
+  display: inline-block;
+  padding: .5rem .7rem;
+  border-radius: .5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.task__container {
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.task__container-title {
+  font-size: 2rem;
+}
+
+.task__boxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2rem;
+}
+
+.task__box {
+  margin: 0 1rem;
+  border-radius: .5rem;
+  width: 15rem;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.task__list {
+  position: relative;
+  list-style: none;
+  border: .2rem dashed transparent;
+  z-index: 9;
+}
+
+.task__title {
+  font-size: 1.75rem;
+  padding: .5rem 1rem;
+  text-align: center;
+}
+
+.task__title--todo {
+  background: #0f81df;
+}
+
+.task__title--ip {
+  background: goldenrod;
+}
+
+.task__title--done {
+  background: green;
+}
+
+.task__item, .task__item-status {
+  background: #545353;
+  padding: 1rem .5rem 2.5rem;
+  margin: .5rem 0;
+  border: .1rem solid transparent;
+  cursor: pointer;
+  -webkit-box-shadow: 0 0.2rem 0.3rem 0 rgba(0, 0, 0, 0.75);
+          box-shadow: 0 0.2rem 0.3rem 0 rgba(0, 0, 0, 0.75);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.task__item-status {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 1rem .5rem;
+}
+
+.task__list.hovered .task__item {
+  pointer-events: none;
+}
+
+.task__add {
+  text-align: right;
+  position: relative;
+}
+
+.task__add-btn {
+  width: 100%;
+  background: #545353;
+  padding: .5rem;
+  color: aqua;
+  cursor: pointer;
+}
+
+.task__add-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #333;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.task__add-field.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.task__add-input {
+  color: rgba(255, 255, 255, 0.5);
+  background: #545353;
+  padding: .5rem;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+
+.task__add-cancel, .task__add-create {
+  background: #545353;
+  color: #fff;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+.task__add-create {
+  background: aqua;
+  color: #545353;
+}
+
+.hold {
+  border: 0.1rem solid #b6aeae;
+}
+
+.hide {
+  display: none;
+}
+
+.hovered {
+  border: .2rem dashed #a7a7a7;
+}
+/*# sourceMappingURL=style.css.map */
