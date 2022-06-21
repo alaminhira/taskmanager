@@ -2,12 +2,9 @@
 const _ = el => document.querySelector(el);
 const taskBoxes = _('.task__boxes');
 const lists = document.querySelectorAll('.task__list');
-const items = document.querySelectorAll('.task__item');
-const taskAdd = _('.task__add');
-const taskField = _('.task__add-field');
-const formInput = _('.task__add-input');
+const taskAddFields = document.querySelectorAll('.task__add-field');
 
-let data = 
+let data = null;
 (function () {
     const request = new XMLHttpRequest();
     request.open('GET', 'tasks.json');
@@ -28,10 +25,18 @@ let data =
 })();
 
 const renderTask = function (list, tasks) {
-    tasks.forEach(task => {
+
+    [].concat(tasks).forEach(task => {
         _(`[data-list="${list}"]`).insertAdjacentHTML(
             'beforeend',
-            `<li class="task__item" draggable="true">${task}</li>`
+            `<li class="task__item" draggable="true">
+                <div class="task__item-icons">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash"></i>
+                </div>
+                <p contenteditable="false">${task}</p>
+            </li>
+            `
         );
     })
 }
@@ -56,12 +61,13 @@ const dragStart = function (e) {
 
     if (childCount - 1 < 1) {
         renderStatus(this.dataset.list, data.status)
-        this.querySelector('.task__item-status').classList.remove('hide');
+        this.querySelector('.task__item-status')?.classList.remove('hide');
     }
 }
 
 const dragEnd = function (e) {
     e.target.classList.remove('hold', 'hide');
+    this.querySelector('.task__item-status')?.classList.add('hide');
 }
 
 const dragOver = (e) => e.preventDefault();
@@ -80,7 +86,6 @@ const dragDrop = function (e) {
     const itemHold = document.querySelector('.hold');
     this.appendChild(itemHold);
     this.classList.remove('hovered');
-    this.querySelector('.task__item-status').classList.add('hide');
 }
 
 lists.forEach((list, i) => {
@@ -103,28 +108,46 @@ const addToTodo = function (e) {
     const curEl = e.target;
 
     if (curEl.classList.contains('task__add-btn')) {
+        taskAddFields.forEach(f => f.classList.remove('show'));
         curEl.nextElementSibling.classList.add('show');
-    } else if (curEl.classList.contains('task__add-cancel')) {
-
+    } else if (
+        curEl.classList.contains('task__add-cancel') ||
+        e.keyCode === 27
+    ) {
         curEl.parentNode.classList.remove('show');
         const curInpur = curEl.parentNode.querySelector('.task__add-input');
         curInpur.value = '';
     }
 
-    if (curEl.classList.contains('task__add-create')) {
+    if (
+        curEl.classList.contains('task__add-create') || 
+        e.keyCode === 13
+    ) {
         const curInpur = curEl.parentNode.querySelector('.task__add-input');
         const value = curInpur.value;
 
         if (!value) return;
 
-        curEl.closest('.task__add').previousElementSibling.insertAdjacentHTML(
-            'beforeend',
-            `<li class="task__item" draggable="true">${value}</li>`
-        )
+        const curListId = curEl.closest('.task__add').previousElementSibling.dataset.list;
+
+        renderTask(curListId, value);
+
         curInpur.value = '';
 
-        curEl.closest('.task__add').previousElementSibling.querySelector('.task__item-status').classList.add('hide');
+        curEl.parentNode.classList.remove('show');
+        curEl.closest('.task__add').previousElementSibling.querySelector('.task__item-status')?.classList.add('hide');
     }
 }
 
+const manipulateTask = function (e) {
+    let curIcon = e.target;
+    if (curIcon.classList.contains('fa-edit')) {
+        curIcon.closest('.task__item').querySelector('p').contentEditable = "true";
+    } else {
+        curIcon.closest('.task__item').querySelector('p').contentEditable = "false";
+    }
+} 
+
 taskBoxes.addEventListener('click', addToTodo);
+document.addEventListener('keydown', addToTodo);
+taskBoxes.addEventListener('click', manipulateTask);
